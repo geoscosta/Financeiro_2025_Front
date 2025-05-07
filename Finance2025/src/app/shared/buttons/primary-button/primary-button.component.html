@@ -1,0 +1,18 @@
+<button
+  [ngClass]="{
+    loading: loading,
+    disabled: !enabled,
+    right: right,
+    full: widthFull,
+    common: color === 'common',
+    primary: color === 'primary',
+    warning: color === 'warning'
+  }"
+  (click)="handleButtonClick($event)"
+>
+  <div *ngIf="loading" class="loading-animation"></div>
+  <div *ngIf="icon" class="icon">
+    <img *ngIf="!loading && icon" [src]="icon" />
+  </div>
+  <span>{{ label }}</span>
+</button>

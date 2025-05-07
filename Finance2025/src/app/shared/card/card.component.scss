@@ -1,0 +1,88 @@
+@import "../../../assets/scss/styles";
+
+article {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+
+  &.close {
+    overflow: hidden;
+  }
+
+  &.elevation {
+    border-radius: 1rem;
+    border: 1px solid $color-common-300;
+
+    &.common {
+      box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
+        rgba($color: $color-common-600, $alpha: 0.25);
+    }
+
+    &.primary {
+      box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
+        rgba($color: $color-primary-900, $alpha: 0.5);
+    }
+
+    main {
+      padding: 0 3rem 1rem;
+    }
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    padding: 0 3rem;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.5rem;
+      width: 2.5rem;
+      min-height: 2.5rem;
+      min-width: 2.5rem;
+      border-radius: 50%;
+      background-color: $color-primary-100;
+
+      img {
+        height: 1.5rem;
+        width: 1.5rem;
+        user-select: none;
+      }
+    }
+
+    strong {
+      flex: 1;
+      @include text-2xl-bold;
+      color: $color-common-700;
+      white-space: nowrap;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+
+      app-icon-button {
+        transition: all 0.3s ease-in-out;
+
+        &.rotate-animation {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  main {
+    padding: 0 3rem 1rem 4rem;
+    margin: 3rem 0rem;
+  }
+}
+
+.line {
+  border-color: $color-common-100;
+  border-radius: 16px 0px;
+}

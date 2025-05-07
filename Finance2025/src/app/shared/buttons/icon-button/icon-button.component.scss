@@ -1,0 +1,105 @@
+@import "../../../../assets/scss/styles";
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  img {
+    user-select: none;
+  }
+
+  .loading-animation {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 0.25rem solid transparent;
+    border-radius: 50%;
+    animation: spin 1s ease infinite;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &.common {
+    .loading-animation {
+      border-top-color: $color-common-600;
+    }
+
+    &:hover:not(.disabled) {
+      background-color: $color-common-300;
+    }
+  }
+
+  &.primary {
+    .loading-animation {
+      border-top-color: $color-primary-600;
+    }
+
+    &:hover:not(.disabled) {
+      background-color: $color-primary-100;
+    }
+
+    &.disabled {
+      img {
+        filter: brightness(0) saturate(100%) invert(67%) sepia(5%)
+          saturate(1067%) hue-rotate(176deg) contrast(96%);
+      }
+    }
+  }
+
+  &.warning {
+    .loading-animation {
+      border-top-color: $color-warning-600;
+    }
+
+    &:hover:not(.disabled) {
+      background-color: $color-warning-100;
+    }
+
+    &.disabled {
+      background-color: $color-warning-200;
+
+      img {
+        filter: brightness(0) saturate(100%) invert(58%) sepia(37%)
+          saturate(2665%) hue-rotate(318deg) brightness(105%) contrast(94%);
+      }
+    }
+  }
+
+  &.white {
+    .loading-animation {
+      border-top-color: $color-white;
+    }
+
+    &:hover:not(.disabled) {
+      background-color: rgba($color: $color-black, $alpha: 0.15);
+    }
+
+    &.disabled {
+      background-color: $color-common-200;
+
+      img {
+        filter: brightness(0) saturate(100%) invert(67%) sepia(11%)
+          saturate(532%) hue-rotate(176deg) brightness(94%) contrast(93%);
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0turn);
+  }
+
+  100% {
+    transform: rotate(1turn);
+  }
+}

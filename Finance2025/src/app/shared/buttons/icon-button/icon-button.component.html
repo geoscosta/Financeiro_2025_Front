@@ -1,0 +1,16 @@
+<button
+  [ngClass]="{
+    disabled: !enabled,
+    common: color === 'common',
+    primary: color === 'primary',
+    warning: color === 'warning',
+    white: color === 'white',
+  }"
+  [disabled]="!enabled || loading"
+  (click)="handleButtonClick($event)"
+  (mouseover)="handleButtonHover($event)"
+  (mouseout)="handleButtonLeave($event)"
+>
+  <div *ngIf="loading" class="loading-animation"></div>
+  <img *ngIf="!loading && icon" [src]="icon" [style.width] = "width" [style.height] = "height" />
+</button>

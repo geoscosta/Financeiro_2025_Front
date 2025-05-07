@@ -1,0 +1,30 @@
+<article
+  [ngClass]="{
+    close: !open,
+    elevation: elevation,
+    common: color === 'common',
+    primary: color === 'primary'
+  }"
+>
+  <header>
+    <div *ngIf="icon">
+      <img *ngIf="icon" [src]="icon" alt="Card Icon" />
+    </div>
+    <strong>{{ title }}</strong>
+    <section class="actions">
+      <ng-content select="[actions]"></ng-content>
+      <app-icon-button
+        *ngIf="accordion"
+        [ngClass]="{ 'rotate-animation': open }"
+        icon="../../../assets/icons/arrow.svg"
+        [color]="ButtonColorEnum.common"
+        (click)="handleToggleAccordion()"
+      ></app-icon-button>
+    </section>
+  </header>
+  <hr class="line">
+  <main [@smoothCollapse]="open ? 'initial' : 'final'">
+    <ng-content select="[body]"></ng-content>
+  </main>
+</article>
+
