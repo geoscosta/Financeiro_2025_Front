@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/styles";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $color-common-100;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 7px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-radius: 14px;
+  background-clip: padding-box;
+  background-color: $color-common-500;
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
+::-webkit-resizer {
+  display: none;
+}
+
+
+@media (max-width: 1376px) {
+  html {
+    font-size: 14px;
+  }
+}
