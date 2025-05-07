@@ -1,0 +1,38 @@
+<section [style.paddingTop]="paddingTopSection" [style.paddingLeft]="paddingLeftSection" [style.paddingRight]="paddingRightSection"
+  [ngClass]="{
+    error: error,
+    disabled: disabled
+  }"
+>
+  <label *ngIf="visible">
+    {{ label }}
+    <span *ngIf="optional">(opcional)</span>
+  </label>
+  <div *ngIf="visible" class="input-wrapper">
+    <input
+      [ngClass]="{ 'display-icon': icon, 'background-color-grey': backgroundColorGrey }"
+      [formControl]="control"
+      [placeholder]="placeholder"
+      [mask]="selectMask()"
+      [type]="type"
+      (ngModelChange)="onChange()"
+      [style.width]="width"
+      [maxlength]="maxlength"
+    />
+    <div *ngIf="loading" class="loading-animation" [style.right]="rightLoading"></div>
+  </div>
+  <div *ngIf="icon && visible" class="icon" [style.paddingTop]="paddingTop">
+    <img [src]="icon" alt="Icon" />
+  </div>
+  <app-password-validation
+    *ngIf="passwordValidation"
+    [validator]="PasswordValidModel"
+  ></app-password-validation>
+  <footer *ngIf="errorMessage">
+    <div *ngIf="error">
+      <img src="assets/icons/error.svg" alt="Error Icon" />
+      <span>{{ errorMessage }}</span>
+    </div>
+  </footer>
+</section>
+

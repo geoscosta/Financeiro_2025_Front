@@ -1,0 +1,151 @@
+@import "../../../assets/scss/styles";
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+
+  label {
+    @include text-sm-bold;
+    color: $color-common-600;
+
+    span {
+      @include text-sm-regular;
+      color: $color-common-400;
+    }
+  }
+
+  input {
+    height: 3rem;
+    border: 1px solid $color-common-600;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    @include text-sm-regular;
+    color: $color-common-500;
+    outline: none;
+    background-color: $color-white;
+
+    &.background-color-grey {
+      background-color: $color-common-100;
+    }
+
+    &.display-icon {
+      padding-left: 3rem;
+    }
+
+    &::placeholder {
+      color: $color-common-400;
+    }
+
+    &:focus {
+      border: 2px solid $color-common-600;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    border: 1px solid transparent;
+
+    img {
+      height: 1.5rem;
+      width: 1.5rem;
+      user-select: none;
+    }
+  }
+
+  footer {
+    height: 1.125rem;
+
+    div {
+      display: flex;
+      gap: 0.5rem;
+
+      img {
+        height: 1rem;
+        width: 1rem;
+        user-select: none;
+      }
+
+      span {
+        @include text-xs-regular;
+        color: $color-warning-600;
+      }
+    }
+  }
+
+  &.error {
+    label {
+      color: $color-warning-600;
+    }
+
+    input {
+      color: $color-warning-600;
+      border-color: $color-warning-600;
+
+      &::placeholder {
+        color: $color-warning-400;
+      }
+
+      &:focus {
+        border-color: $color-warning-600;
+      }
+    }
+  }
+
+  &.disabled {
+    label {
+      color: $color-common-400;
+    }
+
+    input {
+      color: $color-common-400;
+      border-color: $color-common-400;
+      background-color: $color-common-200;
+
+      &::placeholder {
+        color: $color-common-400;
+      }
+
+      &:focus {
+        border: 1px solid $color-common-400;
+      }
+    }
+  }
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+}
+
+.loading-animation {
+  position: absolute;
+  top: 25%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.25rem solid transparent;
+  border-top-color: $color-primary-600;
+  border-radius: 50%;
+  animation: spin 1s ease infinite;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0turn);
+  }
+
+  100% {
+    transform: rotate(1turn);
+  }
+}
