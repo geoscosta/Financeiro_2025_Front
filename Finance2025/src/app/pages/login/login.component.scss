@@ -1,0 +1,94 @@
+@use "../../../assets/scss/styles" as *;
+
+.container {
+  padding: 40px 37px 40px 37px;
+  //background-image: url("../../../assets/images/necxtlogo.svg");
+  background-position: 40%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+}
+
+.left {
+  background: transparent;
+}
+
+.right {
+  background: transparent;
+}
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: $color-common-600;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 30rem;
+    margin-top: -0.5rem;
+
+    app-primary-button {
+      margin: 1rem 0rem -1.5rem 0rem;
+    }
+  }
+}
+
+.login-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  color: $color-common-600;
+}
+
+.hr-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  margin: 3rem 0rem 0.5rem 0rem;
+  min-height: 1.5rem;
+}
+
+.hr-container::before,
+.hr-container::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid $color-common-400;
+  margin: 0 10px;
+  background: transparent;
+}
+
+.hr-container span {
+  white-space: nowrap;
+  background: transparent;
+  padding: 0 10px;
+  color: $color-common-400;
+  font-family: "Inter", sans-serif;
+}
+
+.error {
+  width: 100%;
+  height: auto;
+  background: transparent;
+  color: $color-warning-600;
+  @include text-base-regular;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+
+  img {
+    width: 18.5px;
+  }
+}

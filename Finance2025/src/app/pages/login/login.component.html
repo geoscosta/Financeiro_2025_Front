@@ -1,0 +1,46 @@
+<div class="container">
+  <!-- <div class="left">
+    <img src="assets/images/boasvindas.svg" alt="" />
+  </div> -->
+  <div class="right">
+    <app-card
+      [title]="'Login'"
+      [color]="CardColorEnum.primary"
+      [accordion]="false"
+    >
+      <section body *ngIf="!lostPassword">
+        <div class="error" *ngIf="error">
+          <img src="assets/icons/error.svg">
+          <p>Email ou senha inválidos. Por favor, tente novamente.</p>
+        </div>
+        <app-input
+          label="Email"
+          placeholder="example@example.com"
+          errorMessage="campo obrigatório"
+          [control]="form.controls.email"
+          [error]="!form.controls.email.valid && !form.controls.email.pristine"
+          [disabled]="false"
+        ></app-input>
+        <app-input
+          label="Senha"
+          placeholder="Insira sua senha"
+          errorMessage="campo obrigatório"
+          [type]="InputTypeEnum.password"
+          [control]="form.controls.password"
+          [error]="
+            !form.controls.password.valid && !form.controls.password.pristine
+          "
+          [disabled]="false"
+        ></app-input>
+        <app-primary-button
+          label="Entrar"
+          [widthFull]="true"
+          [color]="ButtonColorEnum.primary"
+          [loading]="isLoading"
+          [enabled]="isFormValid() && !isLoading"
+          (clickFunc)="handleLogin()"
+        ></app-primary-button>
+      </section>
+    </app-card>
+  </div>
+</div>

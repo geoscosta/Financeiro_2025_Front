@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@use "./colors.scss";
 
 @mixin display-flex-center {
   display: flex;

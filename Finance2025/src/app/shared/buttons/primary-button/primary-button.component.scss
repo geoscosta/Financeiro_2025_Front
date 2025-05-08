@@ -1,4 +1,4 @@
-@import "../../../../assets/scss/styles";
+@use "../../../../assets/scss/styles" as *;
 
 button {
   display: flex;
@@ -89,7 +89,7 @@ button {
   }
 
   &.primary {
-    background-color: $color-primary-600;
+    background-color: $color-common-600;
 
     img {
       filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%)
@@ -97,11 +97,11 @@ button {
     }
 
     &:hover:not(.disabled) {
-      background-color: $color-primary-800;
+      background-color: $color-common-800;
     }
 
     &.disabled {
-      background-color: $color-primary-200;
+      background-color: $color-common-200;
 
       img {
         filter: brightness(0) saturate(100%) invert(56%) sepia(58%)
@@ -109,7 +109,7 @@ button {
       }
 
       span {
-        color: $color-primary-400;
+        color: $color-common-600;
       }
     }
   }

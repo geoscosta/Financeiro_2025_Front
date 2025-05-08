@@ -1,4 +1,4 @@
-@import "./assets/scss/styles";
+@use "./assets/scss/styles" as *;
 
 * {
   margin: 0;
