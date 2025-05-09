@@ -8,6 +8,7 @@ import { InputTypeEnum } from '../../shared/input/enums/input-type.enum';
 import { CardComponent } from '../../shared/card/card.component';
 import { InputComponent } from '../../shared/input/input.component';
 import { PrimaryButtonComponent } from '../../shared/buttons/primary-button/primary-button.component';
+import { LoginService } from '../../services/LoginService';
 
 @Component({
   selector: 'app-login',
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public formBuilder: FormBuilder,
+    private loginService: LoginService,
 //    private msalBroadcastService: MsalBroadcastService,
   ) {
     this.form = this.formBuilder.group({
@@ -76,16 +78,32 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
 
-    // Aqui você pode adicionar a lógica de autenticação
-    // Simulação de login, você pode substituir pela chamada real à API ou serviço de autenticação
-    setTimeout(() => {
-      if (email === 'test@example.com' && password === 'password123') {
+    const credentials = {
+      email: this.form.value.email ?? '',
+      password: this.form.value.password ?? '',
+    };
+
+    this.loginService.login(credentials).subscribe({
+      next: (token: string) => {
+        localStorage.setItem('token', token);
         this.router.navigate(['/home']); // Redireciona após login bem-sucedido
-      } else {
+      },
+      error: () => {
         this.error = true; // Exibe erro se as credenciais estiverem erradas
         this.isLoading = false;
       }
-    }, 1000);
+    });
+
+    // Aqui você pode adicionar a lógica de autenticação
+    // Simulação de login, você pode substituir pela chamada real à API ou serviço de autenticação
+    // setTimeout(() => {
+    //   if (email === 'test@teste.com' && password === 'Mudar@123') {
+    //     this.router.navigate(['/home']); // Redireciona após login bem-sucedido
+    //   } else {
+    //     this.error = true; // Exibe erro se as credenciais estiverem erradas
+    //     this.isLoading = false;
+    //   }
+    // }, 1000);
   }
 
   handleLostPassword() {

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -9,5 +10,9 @@ export const routes: Routes = [
   },
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/dashboard/dashboard-module').then(m => m.DashboardModule)
   }
 ];
