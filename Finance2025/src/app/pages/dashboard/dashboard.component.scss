@@ -1,0 +1,13 @@
+@import "../../../assets/scss/styles";
+
+section {
+  padding: 2.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.justify-content-center {
+  display: flex;
+  justify-content: center;
+}

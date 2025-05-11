@@ -1,0 +1,144 @@
+@import "../../../assets/scss/styles";
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color-primary-600;
+  height: 5rem;
+  padding: 0 4rem;
+  box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
+    rgba($color: $color-primary-600, $alpha: 0.35);
+
+  img {
+    height: 2.5rem;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-color: $color-common-100;
+        user-select: none;
+
+        span {
+          @include text-base-bold;
+          color: $color-common-600;
+        }
+      }
+
+      strong {
+        @include text-base-bold;
+        color: $color-white;
+      }
+    }
+  }
+
+  .menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .submenu {
+      position: absolute;
+      top: 150%;
+      left: -64px;
+      background-color: $color-primary-100;
+      border-radius: 0 0 10px 0;
+      padding: 1rem;
+      width: 24rem;
+      z-index: 1000;
+      box-shadow: 0px 0px 16px 0px #05484240;
+
+      .submenu-title {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        color: $color-common-600;
+        @include text-base-bold;
+        padding: 10px 20px;
+        border: none;
+        transition: color 0.3s ease;
+        font-size: 16px;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        white-space: nowrap;
+      }
+
+      .submenu-button {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        color: $color-black;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        font-size: 16px;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        white-space: nowrap;
+
+        .icon {
+          margin-right: 10px;
+          width: 20px;
+          height: 20px;
+        }
+
+        &:hover {
+          color: $color-primary-600;
+        }
+      }
+    }
+  }
+
+  .menu-container img {
+    margin-right: 10px;
+  }
+
+  .menu-container img:first-child {
+    margin-right: 10px;
+  }
+
+  .separator {
+    font-size: 50px;
+    color: whitesmoke;
+    margin-bottom: 10px;
+    font-family: "Open Sans";
+    font-weight: 1;
+  }
+
+  .analytics {
+    @include text-3xl-extralight;
+    color: $color-white;
+    margin-left: -10px;
+  }
+
+  .line {
+    display: flex;
+    justify-content: center;
+
+    hr {
+      border-color: $color-primary-900;
+      width: 90%;
+      border-top: 1.5px;
+    }
+  }
+}

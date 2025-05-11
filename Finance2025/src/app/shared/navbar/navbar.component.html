@@ -1,0 +1,119 @@
+<nav (clickOutside)="close()">
+  <div class="options">
+    <div class="menu-container">
+      <img
+        [src]="'../../../assets/icons/white_menu.svg'"
+        (click)="toggleSubmenu()"
+        width="23px"
+        height="23px"
+      />
+      <div class="submenu" *ngIf="showSubmenu">
+        <button class="submenu-button" (click)="handleNavigateToCategory()">
+          <img
+            src="../../../assets/icons/category.svg"
+            class="icon"
+          />
+          <span>Gestão de Categorias</span>
+        </button>
+        <button class="submenu-button" (click)="handleNavigateToUser()">
+          <img
+            src="../../../assets/icons/user.svg"
+            class="icon"
+          />
+          <span>Gestão de Usuários</span>
+        </button>
+        <button
+          class="submenu-button"
+          (click)="handleNavigateToClient()"
+        >
+          <img
+            src="../../../assets/icons/client.svg"
+            class="icon"
+          />
+          <span>Gestão de Clientes</span>
+        </button>
+        <button
+          class="submenu-button"
+          (click)="handleNavigateToTranscription()"
+        >
+          <img
+            src="../../../assets/icons/transcription.svg"
+            class="icon"
+          />
+          <span>Gestão de Transcrições</span>
+        </button>
+        <div class="line">
+          <hr />
+        </div>
+        <strong class="submenu-title">Relatórios</strong>
+        <button class="submenu-button" (click)="handleNavigateToSaReport()">
+          <img
+            src="../../../assets/icons/report_icon.svg"
+            class="icon"
+          />
+          <span>Análise de Sentimento</span>
+        </button>
+        <button
+          class="submenu-button"
+          (click)="handleNavigateToCategoryAnalysisReport()"
+        >
+          <img
+            src="../../../assets/icons/report_icon.svg"
+            class="icon"
+          />
+          <span>Análise de Categorias</span>
+        </button>
+        <button *ngIf="hasSupervisorRole"
+          class="submenu-button"
+          (click)="handleNavigateToAnalyticalReportReport()"
+        >
+          <img
+            src="../../../assets/icons/report_icon.svg"
+            class="icon"
+          />
+          <span>Relatório Analítico</span>
+        </button>
+        <button
+          class="submenu-button"
+          (click)="handleNavigateToDashboard()"
+        >
+          <img
+            src="../../../assets/icons/report_icon.svg"
+            class="icon"
+          />
+          <span>Dashboards</span>
+        </button>
+        <button
+          class="submenu-button"
+          (click)="handleNavigateToKeywordsCloud()"
+        >
+          <img
+            src="../../../assets/icons/report_icon.svg"
+            class="icon"
+          />
+          <span>Nuvem de Palavras</span>
+        </button>
+      </div>
+    </div>
+    <!-- <img
+      [src]=""
+      (click)="handleNavigateToHome()"
+    /> -->
+    <span class="separator">|</span>
+    <p class="analytics">Sistema Financeiro 2025</p>
+  </div>
+  <div class="options" *ngIf="isUserLogged">
+    <div class="user">
+      <div class="avatar">
+        <span>{{ initials }}</span>
+      </div>
+      <strong>{{ username }}</strong>
+    </div>
+    <app-icon-button
+      icon="../../../assets/icons/logout.svg"
+      [color]="ButtonColorEnum.white"
+      (clickFunc)="handleLogout()"
+    ></app-icon-button>
+  </div>
+</nav>
+
