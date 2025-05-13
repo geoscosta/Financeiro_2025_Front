@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SecondaryButtonComponent } from './secondary-button.component';
+import { ExpenseFilterComponent } from './expense-filter.component';
 
-describe('SecondaryButtonComponent', () => {
-  let component: SecondaryButtonComponent;
-  let fixture: ComponentFixture<SecondaryButtonComponent>;
+describe('ExpenseFilterComponent', () => {
+  let component: ExpenseFilterComponent;
+  let fixture: ComponentFixture<ExpenseFilterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SecondaryButtonComponent]
+      imports: [ExpenseFilterComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SecondaryButtonComponent);
+    fixture = TestBed.createComponent(ExpenseFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

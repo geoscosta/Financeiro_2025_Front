@@ -1,0 +1,113 @@
+@import "../../../../assets/scss/styles";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .grid-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 48rem;
+  }
+
+  .second-row-button {
+    margin-top: 1.5rem;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+strong {
+  @include text-2xl-bold;
+  font-size: 12px;
+  font-family: Verdana;
+  color: $color-common-700;
+}
+
+.word-textarea {
+  @include text-sm-bold;
+  width: 100%;
+  min-height: 50px;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid $color-common-300;
+  border-radius: 7px;
+  font-size: 14px;
+  outline: none;
+  overflow-y: auto;
+  background-color: $color-white;
+  color: $color-common-800;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  position: relative;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  min-width: 48rem;
+  max-width: 48rem;
+}
+
+.keyword {
+  display: flex;
+  background-color: $color-common-300;
+  color: $color-common-800;
+  border-radius: 8px;
+  padding: 6.4px 10px;
+  gap: 0.5rem;
+}
+
+.keyword-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 4.3rem;
+
+  &.show-all {
+    max-width: 100%;
+  }
+}
+
+.remove-icon {
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.see-all-btn {
+  display: flex;
+  padding: 16px 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+button {
+  background-color: $color-common-600;
+  color: $color-common-100;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  height: 30px;
+}
+
+button:hover {
+  background-color: $color-common-800;
+}
+
+app-modal-response {
+  strong {
+    @include text-base-regular;
+    color: $color-common-500;
+  }
+
+  .btn-ok {
+    margin-left: 2rem;
+  }
+}

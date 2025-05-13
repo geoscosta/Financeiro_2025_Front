@@ -1,26 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { GetCategoriesFilter } from '../service/models/category.service.model';
+import { GetExpenseFilter } from '../service/models/expense.service.model';
 import { ButtonColorEnum } from '../../../shared/buttons/enums/button-color.enum';
 import { PrimaryButtonComponent } from "../../../shared/buttons/primary-button/primary-button.component";
 
 @Component({
-  selector: 'app-category-list',
+  selector: 'app-expense-list',
   standalone: true,
   imports: [CommonModule, PrimaryButtonComponent],
-  templateUrl: './category-list.component.html',
-  styleUrl: './category-list.component.scss'
+  templateUrl: './expense-list.component.html',
+  styleUrl: './expense-list.component.scss'
 })
-export class CategoryListComponent {
+export class ExpenseListComponent {
   constructor(
-
     public router: Router
   ) {}
 
-  @Input() filter!: GetCategoriesFilter;
+  @Input() filter!: GetExpenseFilter;
 
-  //categoryList: GetCategoriesResponse[] = [];
   page: number = 1;
   pageSize: number = 10;
   totalItems: number = 0;
@@ -33,10 +31,7 @@ export class CategoryListComponent {
   }
 
   ngOnInit(): void {
-    //const role = this.storageService.getRole();
-    //this.hasSupervisorRole = role === UserRoleEnum.supervisor;
-
-    this.filter = {} as GetCategoriesFilter;
+    this.filter = {} as GetExpenseFilter;
     this.get();
   }
 
@@ -55,7 +50,6 @@ export class CategoryListComponent {
     if (this.isLoading) return;
 
     this.isLoading = true;
-    //this.clearItems();
 
     const filters = JSON.parse(JSON.stringify(this.filter));
 
@@ -63,29 +57,12 @@ export class CategoryListComponent {
     filters.pageSize = this.pageSize;
   }
 
-  // setCategoryList(data: GetCategoriesResponse[]) {
-  //   if (!data?.length) return;
-
-  //   this.categoryList = data.map((form) => ({
-  //     id: form.id,
-  //     name: form.name,
-  //     active: form.active,
-  //     creationDate: form.creationDate,
-  //     keyword: [],
-  //   }));
-  // }
-
   handleSelectPage(index: number) {
     this.page = index;
-    //this.clearItems();
     this.get();
   }
 
-  // clearItems() {
-  //   this.categoryList = [];
-  // }
-
   navigateToNewForm() {
-    this.router.navigate(['/category/new']);
+    this.router.navigate(['/expense/new']);
   }
 }

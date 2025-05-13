@@ -23,10 +23,6 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/category/category-module').then(m => m.CategoryModule)
   },
   {
-    path: 'category/new',
-    loadChildren: () => import('./pages/category/category-module').then(m => m.CategoryModule)
-  },
-  {
     path: 'expense',
     loadChildren: () => import('./pages/expense/expense-module').then(m => m.ExpenseModule)
   }

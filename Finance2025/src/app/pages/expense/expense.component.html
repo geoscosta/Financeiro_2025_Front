@@ -1,0 +1,4 @@
+<section>
+  <app-expense-filter (filterEmmiter)="setFilter($event)"></app-expense-filter>
+  <app-expense-list [filter]="filter"></app-expense-list>
+</section>

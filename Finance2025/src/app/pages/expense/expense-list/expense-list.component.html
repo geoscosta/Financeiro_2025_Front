@@ -1,0 +1,24 @@
+<article>
+  <header>
+    <strong>Gestão de Despesas</strong>
+    <section>
+      <app-primary-button
+
+        label="Nova Despesa"
+        icon="assets/icons/add.svg"
+        [color]="ButtonColorEnum.common"
+        (clickFunc)="navigateToNewForm()"
+      ></app-primary-button>
+    </section>
+  </header>
+  <main>
+    <!-- <app-category-list-header></app-category-list-header> -->
+    <ng-container *ngIf="isLoading">
+      <div *ngFor="let i of [1, 2, 3, 4, 5]" class="skeleton">
+        <div class="skeleton-column">
+          <div class="skeleton-item"></div>
+        </div>
+      </div>
+    </ng-container>
+  </main>
+</article>
