@@ -1,0 +1,86 @@
+@import "../../../assets/scss/styles";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color: $color-black, $alpha: 0.7);
+  backdrop-filter: blur(8px);
+
+  section {
+    border: 1px solid $color-common-300;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: $color-white;
+    box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
+      rgba($color: $color-black, $alpha: 0.25);
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2.5rem;
+      height: 4.5rem;
+      padding: 0 1.5rem;
+      width: 800px;
+      margin-top: 1.5rem;
+
+      .header-title {
+        display: flex;
+        flex-direction: column;
+
+        img {
+          max-width: 35px;
+          max-height: 35px;
+        }
+
+        strong {
+          @include text-2xl-bold;
+          color: $color-common-700;
+          margin: 0;
+        }
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+      }
+
+      .gray-background {
+        background-color: $color-common-200;
+        border-radius: 50%;
+      }
+    }
+
+    @media (max-width: 900px) {
+      header {
+        width: 100%;
+      }
+    }
+
+    main {
+      padding-left: 1.5rem;
+      padding-top: 0.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $color-common-200;
+      max-width: 49rem;
+      @include text-sm-regular;
+      color: $color-common-500;
+    }
+
+    footer {
+      padding: 1.5rem 4rem;
+      background-color: $color-common-100;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import "../../../assets/scss/styles";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color: $color-black, $alpha: 0.7);
+  backdrop-filter: blur(8px);
+
+  section {
+    border: 1px solid $color-common-300;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: $color-white;
+    box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
+      rgba($color: $color-black, $alpha: 0.25);
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.5rem;
+      height: 6rem;
+      padding: 0 4rem;
+      border-bottom: 1px solid $color-common-200;
+
+      strong {
+        @include text-2xl-bold;
+        color: $color-common-700;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+      }
+    }
+
+    main {
+      padding: 1.5rem 4rem;
+      border-bottom: 1px solid $color-common-200;
+    }
+
+    footer {
+      padding: 1.5rem 4rem;
+      background-color: $color-common-100;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

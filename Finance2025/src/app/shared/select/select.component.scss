@@ -1,0 +1,186 @@
+@import "../../../assets/scss/styles";
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+
+  label {
+    @include text-sm-bold;
+    color: $color-common-600;
+  }
+
+  .select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border: 1px solid $color-common-600;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    cursor: pointer;
+
+    span {
+      flex: 1;
+      @include text-sm-regular;
+      color: $color-common-500;
+
+      &.placeholder {
+        color: $color-common-400;
+        user-select: none;
+      }
+    }
+
+    img {
+      height: 1.5rem;
+      width: 1.5rem;
+      user-select: none;
+      transform: rotate(0);
+      transition-duration: 0.3s;
+    }
+
+    &.focused {
+      border-width: 2px;
+
+      img {
+        transform: rotate(180deg);
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  footer {
+    height: 1.125rem;
+
+    div {
+      display: flex;
+      gap: 0.5rem;
+
+      img {
+        height: 1rem;
+        width: 1rem;
+        user-select: none;
+      }
+
+      span {
+        @include text-xs-regular;
+        color: $color-warning-600;
+      }
+    }
+  }
+
+  .options {
+    position: absolute;
+    z-index: 20;
+    top: 4.75rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: "13rem";
+    overflow-y: scroll;
+    border: 1px solid $color-common-300;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+    background-color: $color-white;
+    box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
+      rgba($color: $color-common-600, $alpha: 0.25);
+
+    span {
+      padding: 0.5rem;
+      @include text-sm-regular;
+      color: $color-common-500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &.selected,
+      &:hover {
+        @include text-sm-bold;
+        color: $color-primary-600;
+        background-color: $color-common-200;
+      }
+    }
+
+    app-input {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &.error {
+    label {
+      color: $color-warning-600;
+    }
+
+    .select {
+      border-color: $color-warning-600;
+
+      span {
+        &.placeholder {
+          color: $color-warning-400;
+        }
+      }
+
+      img {
+        filter: brightness(0) saturate(100%) invert(21%) sepia(78%)
+          saturate(3204%) hue-rotate(347deg) brightness(89%) contrast(94%);
+      }
+
+      &.focused {
+        border-width: 2px;
+      }
+    }
+  }
+
+  &.disabled {
+    label {
+      color: $color-common-400;
+    }
+
+    .select {
+      color: $color-common-400;
+      border-color: $color-common-400;
+      background-color: $color-common-200;
+
+      span {
+        &.placeholder {
+          color: $color-common-400;
+        }
+      }
+
+      &.focused {
+        border-width: 1px;
+      }
+    }
+
+    .options {
+      span {
+        color: $color-common-400;
+        cursor: default;
+
+        &:hover:not(.selected) {
+          @include text-sm-regular;
+          background-color: $color-white;
+        }
+      }
+    }
+  }
+}
+
+.loading-animation {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.25rem solid transparent;
+  border-top-color: $color-primary-600;
+  border-radius: 70%;
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0turn);
+  }
+
+  100% {
+    transform: rotate(1turn);
+  }
+}

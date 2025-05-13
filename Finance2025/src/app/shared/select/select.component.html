@@ -1,0 +1,47 @@
+<section
+  [ngClass]="{
+    error: error,
+    disabled: disabled
+  }"
+  (clickOutside)="handleBlurSelect()"
+>
+  <label>{{ label }}</label>
+  <div
+    class="select"
+    [ngClass]="{ focused: focused }"
+    (click)="handleToggleFocus()"
+    [style.width]="width"
+  >
+    <span [ngClass]="{ placeholder: !control.value }">
+      {{ control.value || placeholder }}
+    </span>
+    <img *ngIf="!loading" src="assets/icons/multi-select-arrow.svg" alt="Arrow Icon" />
+    <div *ngIf="loading" class="loading-animation"></div>
+  </div>
+
+  <footer>
+    <div *ngIf="error">
+      <img src="assets/icons/error.svg" alt="Error Icon" />
+      <span>{{ errorMessage }}</span>
+    </div>
+  </footer>
+
+  <div *ngIf="focused" [style.max-height]="maxOptionsHeight" class="options">
+    <app-input
+      *ngIf="isSearch"
+      class="search"
+      placeholder="O que você está buscando?"
+      icon="assets/icons/search.svg"
+      (valueChange)="getFilteredOptions($event)"
+      [backgroundColorGrey]="true"
+    ></app-input>
+    <span
+      *ngFor="let option of filterOptions"
+      [ngClass]="{ selected: option === control.value }"
+      (click)="handleSelectOption(option)"
+    >
+      {{ option }}
+    </span>
+  </div>
+</section>
+
