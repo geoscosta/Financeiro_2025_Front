@@ -1,0 +1,102 @@
+@import "../../../../assets/scss/styles";
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  img {
+    height: 1.5rem;
+    width: 1.5rem;
+    user-select: none;
+  }
+
+  span {
+    @include text-base-bold;
+  }
+
+  &.right {
+    flex-direction: row-reverse;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &.common {
+    border: 1px solid $color-common-600;
+    color: $color-common-600;
+
+    &:hover:not(.disabled) {
+      background-color: $color-common-100;
+    }
+
+    &.disabled {
+      border-color: $color-common-200;
+
+      img {
+        filter: brightness(0) saturate(100%) invert(67%) sepia(11%)
+          saturate(532%) hue-rotate(176deg) brightness(94%) contrast(93%);
+      }
+
+      span {
+        color: $color-common-400;
+      }
+    }
+  }
+
+  &.primary {
+    border: 1px solid $color-primary-600;
+    color: $color-primary-600;
+
+    &:hover:not(.disabled) {
+      background-color: $color-primary-100;
+    }
+
+    &.disabled {
+      border-color: $color-primary-200;
+
+      img {
+        filter: brightness(0) saturate(100%) invert(56%) sepia(58%)
+          saturate(383%) hue-rotate(125deg) brightness(88%) contrast(88%);
+      }
+
+      span {
+        color: $color-primary-400;
+      }
+    }
+  }
+
+  &.warning {
+    border: 1px solid $color-warning-600;
+    color: $color-warning-600;
+
+    &:hover:not(.disabled) {
+      background-color: $color-warning-100;
+    }
+
+    &.disabled {
+      border-color: $color-warning-200;
+
+      img {
+        filter: brightness(0) saturate(100%) invert(58%) sepia(37%)
+          saturate(2665%) hue-rotate(318deg) brightness(105%) contrast(94%);
+      }
+
+      span {
+        color: $color-warning-400;
+      }
+    }
+  }
+
+  &.full {
+    width: 100%;
+  }
+}

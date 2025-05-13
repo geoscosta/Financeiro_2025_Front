@@ -1,0 +1,15 @@
+<button
+  [ngClass]="{
+    disabled: !enabled,
+    right: right,
+    common: color === 'common',
+    primary: color === 'primary',
+    warning: color === 'warning',
+    full: widthFull,
+  }"
+  [disabled]="!enabled"
+  (click)="handleButtonClick($event)"
+>
+  <img *ngIf="icon" [src]="icon" />
+  <span>{{ label }}</span>
+</button>
