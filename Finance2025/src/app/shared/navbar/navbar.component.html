@@ -8,6 +8,13 @@
         height="23px"
       />
       <div class="submenu" *ngIf="showSubmenu">
+        <button class="submenu-button" (click)="handleNavigateToHome()">
+          <img
+            src="../../../assets/icons/category.svg"
+            class="icon"
+          />
+          <span>Dashboard</span>
+        </button>
         <button class="submenu-button" (click)="handleNavigateToCategory()">
           <img
             src="../../../assets/icons/category.svg"
@@ -15,26 +22,25 @@
           />
           <span>Gestão de Categorias</span>
         </button>
-        <button class="submenu-button" (click)="handleNavigateToUser()">
+        <button class="submenu-button" (click)="handleNavigateToSystem()">
           <img
             src="../../../assets/icons/user.svg"
             class="icon"
           />
-          <span>Gestão de Usuários</span>
+          <span>Gestão do Sistema</span>
         </button>
         <button
-          class="submenu-button"
-          (click)="handleNavigateToClient()"
+          class="submenu-button" (click)="handleNavigateToExpense()"
         >
           <img
             src="../../../assets/icons/client.svg"
             class="icon"
           />
-          <span>Gestão de Clientes</span>
+          <span>Gestão de Despesas</span>
         </button>
-        <button
+        <!-- <button
           class="submenu-button"
-          (click)="handleNavigateToTranscription()"
+          (click)="handleNavigateToExpense()"
         >
           <img
             src="../../../assets/icons/transcription.svg"
@@ -92,13 +98,13 @@
             class="icon"
           />
           <span>Nuvem de Palavras</span>
-        </button>
+        </button> -->
       </div>
     </div>
-    <!-- <img
+    <img
       [src]=""
       (click)="handleNavigateToHome()"
-    /> -->
+    />
     <span class="separator">|</span>
     <p class="analytics">Sistema Financeiro 2025</p>
   </div>

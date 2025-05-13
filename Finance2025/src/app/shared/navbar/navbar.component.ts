@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
     this.showSubmenu = false;
   }
 
-  handleNavigateToUser() {
+  handleNavigateToSystem() {
     this.router.navigate(['system']);
     this.showSubmenu = false;
   }
