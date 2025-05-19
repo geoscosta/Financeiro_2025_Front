@@ -1,0 +1,59 @@
+<app-modal
+  title="Novo Sistema"
+  [showModal]="showModal"
+  (closeModalFunc)="handleCloseModal()"
+  [closeIcon]="'assets/icons/red_close.ico'"
+>
+  <div main class="main">
+    <div class="grid-content">
+      <app-input
+        label="Nome do sistema"
+        placeholder="Informe o nome do novo sistema"
+        errorMessage="campo obrigatório"
+        [control]="form.controls.name"
+        [error]="!form.controls.name.valid && !form.controls.name.pristine"
+        [disabled]="false"
+      ></app-input>
+    </div>
+  </div>
+  <div footer class="footer">
+    <app-secondary-button
+      label="Cancelar"
+      [color]="ButtonColorEnum.primary"
+      (clickFunc)="handleCloseModal()"
+    ></app-secondary-button>
+    <app-primary-button
+      label="Salvar"
+      [color]="ButtonColorEnum.common"
+      [loading]="isLoading"
+      [enabled]="isFormComplete()"
+    ></app-primary-button>
+  </div>
+</app-modal>
+
+<app-modal-response
+  [showModal]="showModalResponse"
+  [title]="titleModalResponse"
+  (closeModalFunc)="handleCloseModalResponse()"
+  [icon]="iconButtonModalResponse"
+>
+  <strong main> {{ message }} </strong>
+
+  <app-secondary-button
+    footer
+    label="Voltar"
+    [right]="false"
+    [color]="ButtonColorEnum.primary"
+    (clickFunc)="handleCloseModalResponse()"
+  ></app-secondary-button>
+
+  <app-primary-button
+    footer
+    *ngIf="!error"
+    class="btn-ok"
+    label="Ok"
+    [right]="false"
+    [color]="ButtonColorEnum.common"
+    (clickFunc)="handleCloseModalResponse()"
+  ></app-primary-button>
+</app-modal-response>
