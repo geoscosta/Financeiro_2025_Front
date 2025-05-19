@@ -1,0 +1,35 @@
+@import "../../../../assets/scss/styles";
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: calc(100vh - 5rem);
+  width: 100%;
+
+  img {
+    width: 40%;
+    user-select: none;
+
+    @media (max-width: 1376px) {
+      width: 50%;
+    }
+
+    @media (max-width: 768px) {
+      width: 80%;
+    }
+  }
+
+  strong {
+    margin-top: 5rem;
+    @include text-3xl-bold;
+    color: $color-common-700;
+  }
+
+  span {
+    @include text-base-regular;
+    color: $color-common-500;
+  }
+}
