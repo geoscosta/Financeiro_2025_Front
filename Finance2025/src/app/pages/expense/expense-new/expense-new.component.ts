@@ -49,6 +49,8 @@ export class ExpenseNewComponent {
   {
     this.form = this.formBuilder.group({
     name: ['', Validators.required],
+    value: ['', Validators.required],
+    date: ['', Validators.required],
     active: ['', Validators.required],
     keyword: ['', Validators.required],
   });
@@ -65,6 +67,8 @@ export class ExpenseNewComponent {
   isFormComplete() {
     return (
       this.form.controls.name.valid &&
+      this.form.controls.value.valid &&
+      this.form.controls.date.valid &&
       this.form.controls.active.valid &&
       this.keywords.length > 0
     );

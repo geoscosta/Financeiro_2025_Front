@@ -14,6 +14,24 @@
         [error]="!form.controls.name.valid && !form.controls.name.pristine"
         [disabled]="false"
       ></app-input>
+      <app-input
+        label="Valor da despesa"
+        placeholder="Informe o valor da nova despesa"
+        errorMessage="campo obrigatório"
+        [type]= "InputTypeEnum.number"
+        [control]="form.controls.value"
+        [error]="!form.controls.value.valid && !form.controls.value.pristine"
+        [disabled]="false"
+      ></app-input>
+      <app-input
+        label="Data de vencimento"
+        placeholder="Informe a data de vencimento"
+        [type]= "InputTypeEnum.date"
+        errorMessage="campo obrigatório"
+        [control]="form.controls.date"
+        [error]="!form.controls.date.valid && !form.controls.date.pristine"
+        [disabled]="false"
+      ></app-input>
       <app-select
         label="Sistema"
         placeholder="Selecione o sistema"
