@@ -1,3 +1,4 @@
+import { AuthService } from './../../common/services/auth/models/auth.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -8,7 +9,6 @@ import { InputTypeEnum } from '../../shared/input/enums/input-type.enum';
 import { CardComponent } from '../../shared/card/card.component';
 import { InputComponent } from '../../shared/input/input.component';
 import { PrimaryButtonComponent } from '../../shared/buttons/primary-button/primary-button.component';
-import { LoginService } from '../../services/LoginService';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   public isLoading: boolean = false;
   public lostPassword: boolean = false;
   public error: boolean = false;
+  public errorMessage: string = '';
 
   public get ButtonColorEnum() {
     return ButtonColorEnum;
@@ -42,8 +43,7 @@ export class LoginComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public formBuilder: FormBuilder,
-    private loginService: LoginService,
-//    private msalBroadcastService: MsalBroadcastService,
+    private authService: AuthService,
   ) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -51,12 +51,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // loginDisplay = false;
-  // displayedColumns: string[] = ['claim', 'value', 'description'];
-  // dataSource: any = [];
-
   ngOnInit() {
-
     const route = this.activatedRoute.snapshot.routeConfig?.path;
     if (route?.includes('login/reset-password')) {
       this.lostPassword = true;
@@ -71,8 +66,6 @@ export class LoginComponent implements OnInit {
 
   handleLogin() {
     this.error = false;
-    const email = this.form.controls.email.value ?? '';
-    const password = this.form.controls.password.value ?? '';
 
     if (!this.isFormValid() || this.isLoading) return;
 
@@ -83,27 +76,24 @@ export class LoginComponent implements OnInit {
       password: this.form.value.password ?? '',
     };
 
-    this.loginService.login(credentials).subscribe({
-      next: (token: string) => {
-        localStorage.setItem('token', token);
-        this.router.navigate(['/home']); // Redireciona após login bem-sucedido
-      },
-      error: () => {
-        this.error = true; // Exibe erro se as credenciais estiverem erradas
-        this.isLoading = false;
-      }
+    this.authService.login(credentials.email, credentials.password)
+    .then((sucess: boolean) => {
+      if (sucess) {
+        // Verifica redirecionamento ou navega para home
+                const redirectUrl = this.activatedRoute.snapshot.queryParams['redirect'] || '/home';
+                this.router.navigateByUrl(redirectUrl);
+            } else {
+                this.error = true;
+                this.errorMessage = 'Credenciais inválidas';
+            }
+      })
+    .catch((error) => {
+      this.error = true;
+      this.errorMessage = error.message || 'Erro ao realizar login';
+      console.error('Login error details:', error);
+            }).finally(() => {
+      this.isLoading = false;
     });
-
-    // Aqui você pode adicionar a lógica de autenticação
-    // Simulação de login, você pode substituir pela chamada real à API ou serviço de autenticação
-    // setTimeout(() => {
-    //   if (email === 'test@teste.com' && password === 'Mudar@123') {
-    //     this.router.navigate(['/home']); // Redireciona após login bem-sucedido
-    //   } else {
-    //     this.error = true; // Exibe erro se as credenciais estiverem erradas
-    //     this.isLoading = false;
-    //   }
-    // }, 1000);
   }
 
   handleLostPassword() {

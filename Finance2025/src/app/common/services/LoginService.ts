@@ -1,8 +1,8 @@
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { catchError, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { catchError, Observable, throwError } from 'rxjs';
 
 export interface LoginRequest {
   email: string;
@@ -18,8 +18,8 @@ export class LoginService {
 
     constructor(private httpClient: HttpClient) {}
 
-    login(credentials: LoginRequest) {
-        return this.httpClient.post<string>(`${this.baseUrl}/CreateToken`, credentials).pipe(
+    login(credentials: LoginRequest): Observable<string>  {
+        return this.httpClient.post(`${this.baseUrl}/CreateToken`, credentials, { responseType: 'text' }).pipe(
           catchError(this.handleError)
         );
     }
