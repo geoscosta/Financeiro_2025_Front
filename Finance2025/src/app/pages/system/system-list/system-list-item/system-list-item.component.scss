@@ -1,0 +1,30 @@
+@import "../../../../../assets/scss/styles";
+
+.client-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(2.5rem, 1fr));
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+  height: 4rem;
+  border-bottom: 1px solid $color-common-200;
+  padding: 0 4rem;
+
+  &__column {
+    @include text-sm-regular;
+    color: $color-common-500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  strong {
+    @include text-sm-bold;
+  }
+}

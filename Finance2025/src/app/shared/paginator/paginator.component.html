@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="paginator">
+    <ul>
+      <li
+        *ngIf="page > 1 && totalPages > 1"
+        id="previous-button"
+        (click)="setPage(page - 1)"
+      >
+        <img src="assets/icons/left.svg" alt="Left Icon" />
+      </li>
+      <li *ngIf="totalPages == 1" [ngClass]="{ 'active-index': page === 1 }">
+        1
+      </li>
+      <li
+        *ngIf="totalPages > 1"
+        [ngClass]="{ 'active-index': page === 1 }"
+        (click)="setPage(1)"
+      >
+        1
+      </li>
+      <li
+        id="initial-dots"
+        class="dots"
+        *ngIf="
+          numberOfIndexesDisplayed < totalPages &&
+          page > numberOfIndexesDisplayed - 2
+        "
+      >
+        …
+      </li>
+      <li
+        *ngFor="let index of getMiddleIndexes()"
+        [ngClass]="{ 'active-index': page === index }"
+        (click)="setPage(index)"
+      >
+        {{ index }}
+      </li>
+      <li
+        id="ending-dots"
+        class="dots"
+        *ngIf="
+          numberOfIndexesDisplayed < totalPages &&
+          page < totalPages - (numberOfIndexesDisplayed - 3)
+        "
+      >
+        …
+      </li>
+      <li
+        *ngIf="totalPages > 1"
+        [ngClass]="{ 'active-index': page === totalPages }"
+        (click)="setPage(totalPages)"
+      >
+        {{ totalPages }}
+      </li>
+      <li
+        *ngIf="page < totalPages"
+        id="next-button"
+        (click)="setPage(page + 1)"
+      >
+        <img src="assets/icons/right.svg" alt="Right Icon" />
+      </li>
+    </ul>
+  </div>
+
+  <div class="page-description">
+    <span
+      >Exibindo {{ elementsShowing }} de {{ totalElements }} resultado(s)</span
+    >
+  </div>
+</div>
+

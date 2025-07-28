@@ -29,13 +29,12 @@ export class StorageService {
 
   // === Token ===
   getToken(): string {
-    const token = localStorage.getItem(this.TOKEN_KEY) || '';
-    return this.decode(token);
+    return (localStorage.getItem(this.TOKEN_KEY) ?? '').replace(/"/g, '');
   }
 
   setToken(token: string): void {
     console.log('Token recebido para armazenamento:', token);
-    localStorage.setItem(this.TOKEN_KEY, this.encode(token));
+    localStorage.setItem(this.TOKEN_KEY, token.trim());
   }
 
   // === Usuário (objeto JSON) ===
@@ -49,6 +48,7 @@ export class StorageService {
   }
 
   setUser(user: User): void {
+    console.log('Usuário armazenado:', user);
     localStorage.setItem(this.USER_KEY, this.encode(JSON.stringify(user)));
   }
 }

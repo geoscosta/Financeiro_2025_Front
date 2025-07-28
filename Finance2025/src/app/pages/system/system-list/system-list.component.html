@@ -12,7 +12,7 @@
     </section>
   </header>
   <main>
-    <!-- <app-category-list-header></app-category-list-header> -->
+    <app-system-list-header></app-system-list-header>
     <ng-container *ngIf="isLoading">
       <div *ngFor="let i of [1, 2, 3, 4, 5]" class="skeleton">
         <div class="skeleton-column">
@@ -20,5 +20,17 @@
         </div>
       </div>
     </ng-container>
+    <app-system-list-item
+      *ngFor="let system of systemList"
+      [data]="system"
+    ></app-system-list-item>
+    <p *ngIf="!systemList.length">Nenhum sistema encontrado</p>
+    <app-paginator
+      [page]="page"
+      [totalPages]="totalPages"
+      [elementsShowing]="systemList.length"
+      [totalElements]="totalItems"
+      (selectPageFunc)="handleSelectPage($event)"
+    ></app-paginator>
   </main>
 </article>

@@ -1,0 +1,31 @@
+<div class="client-item">
+  <div class="client-item__column">
+    <span>{{ data.name || "-" }}</span>
+  </div>
+  <div class="client-item__column">
+    <span>{{ data.mes || "-" }}</span>
+  </div>
+  <div class="client-item__column">
+    <span>{{ data.ano || "-" }}</span>
+  </div>
+  <div class="client-item__column">
+    <span>{{ data.diaFechamento || "-" }}</span>
+  </div>
+  <div class="client-item__column">
+    <span>{{ data.gerarCopiaDespesa ? "Sim" : "Não" }}</span>
+  </div>
+  <div class="client-item__column">
+    <span>{{ data.mesCopia || "-" }}</span>
+  </div>
+  <div class="client-item__column">
+    <span>{{ data.anoCopia || "-" }}</span>
+  </div>
+
+  <!-- <div class="incident-item__column actions">
+    <app-icon-button
+      icon="../../../../../assets/icons/result.svg"
+      [color]="ButtonColorEnum.primary"
+      (clickFunc)="handleDetails(data.id)"
+    ></app-icon-button>
+  </div> -->
+</div>

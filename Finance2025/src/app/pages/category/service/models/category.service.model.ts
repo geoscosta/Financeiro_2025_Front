@@ -7,3 +7,11 @@ export interface GetCategoriesFilter
   pageNumber: number;
   pageSize: number;
 }
+
+export interface Categoria
+{
+  Id: number;
+  Nome: string;
+  IdSistema: number;
+}
+

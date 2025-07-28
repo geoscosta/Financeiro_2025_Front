@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from '../../storage/StorageService';
 import { Router } from '@angular/router';
-import { User } from './user.model';
-import { LoginService } from '../../LoginService';
+import { LoginService } from '../LoginService';
+import { StorageService } from '../storage/StorageService';
+import { User } from './models/user.model';
 
 @Injectable({
     providedIn: 'root'
@@ -30,6 +30,13 @@ export class AuthService {
         this.storageService.clear();
         return false;
       }
+
+      const user: User = {
+      id: '',                // Não há ID no token, manter vazio ou usar UsuarioAPINumero se necessário
+      email: email,          // Email informado no login
+      name: '',              // `sub` pode ser usado se você quiser mostrar o nome
+    };
+    this.storageService.setUser(user);
 
       return true;
     } catch (error) {

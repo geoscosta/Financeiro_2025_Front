@@ -1,0 +1,56 @@
+@import "../../../assets/scss/styles";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 1rem 0 10rem;
+
+  .paginator {
+    width: 100%;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        color: $color-primary-600;
+        user-select: none;
+        @include text-sm-bold;
+        transition: background-color 0.3s ease;
+
+        img {
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+
+        &:hover:not(.dots, .active-index) {
+          background-color: $color-primary-100;
+          cursor: pointer;
+        }
+
+        &.active-index {
+          background-color: $color-primary-600;
+          color: $color-white;
+        }
+      }
+    }
+  }
+
+  .page-description {
+    @include text-sm-regular;
+    color: $color-common-500;
+    width: 30%;
+  }
+}

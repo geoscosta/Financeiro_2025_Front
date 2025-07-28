@@ -1,4 +1,3 @@
-import { AuthService } from './../../common/services/auth/models/auth.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -9,6 +8,7 @@ import { InputTypeEnum } from '../../shared/input/enums/input-type.enum';
 import { CardComponent } from '../../shared/card/card.component';
 import { InputComponent } from '../../shared/input/input.component';
 import { PrimaryButtonComponent } from '../../shared/buttons/primary-button/primary-button.component';
+import { AuthService } from '../../common/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
